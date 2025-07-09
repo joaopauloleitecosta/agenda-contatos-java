@@ -1,5 +1,7 @@
 package entities;
 
+import com.google.gson.Gson;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +9,8 @@ import java.util.List;
 public class Agenda {
     private List<Contato> contatos;
     private final String arquivo = "contatos.txt";
+    private final String arquivoJson = "contatos.json";
+    private final Gson gson = new Gson();
 
     public Agenda() {
         contatos = new ArrayList<>();
@@ -68,6 +72,14 @@ public class Agenda {
             }
         } catch (IOException e) {
             System.out.println("Erro ao carregar contatos: " + e.getMessage());
+        }
+    }
+
+    public void exportarArquivoJson() {
+        try (Writer writer = new FileWriter(arquivoJson)) {
+            gson.toJson(contatos, writer);
+        } catch (IOException e) {
+            System.out.println("Erro ao exportar para o arquivo JSON: " + e.getMessage());
         }
     }
 

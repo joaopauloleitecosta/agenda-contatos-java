@@ -17,6 +17,7 @@ public class Main {
             System.out.println("2 - Remover contato");
             System.out.println("3 - Buscar contato");
             System.out.println("4 - Listar contato");
+            System.out.println("5 - Exportar contatos para arquivo JSON");
             System.out.println("0 - Sair");
 
             System.out.println("Opção: ");
@@ -58,6 +59,10 @@ public class Main {
                     break;
                 case 4:
                     agenda.listarContatos();
+                    break;
+                case 5:
+                    agenda.exportarArquivoJson();
+                    System.out.println("Arquivo exportado.");
                     break;
                 case 0:
                     System.out.println("Saindo...");
